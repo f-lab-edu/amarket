@@ -4,7 +4,7 @@ import com.amarket.apiserver.model.entity.Seller;
 import lombok.Data;
 
 @Data
-public class SellerCreateRequest {
+public class SellerCreateRequest { //
     private String id;
     private String name;
     private String password;
