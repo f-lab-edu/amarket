@@ -25,6 +25,16 @@ public class Product {
     private Long postId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
+
+    @Column(name = "category_1")
+    private String category1 ;
+
+    @Column(name = "category_2")
+    private String category2;
+
+    @Column(name = "category_3")
+    private String category3;
+
 }

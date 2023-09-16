@@ -10,12 +10,15 @@ public class Review {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "order_product_id")
+    private OrderProduct orderProduct;
 
     @Column(name = "content")
     private String content;
 
     @Column(name = "score")
     private Integer score;
+
+
 }
+

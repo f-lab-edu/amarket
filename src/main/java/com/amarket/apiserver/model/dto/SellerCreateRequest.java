@@ -4,9 +4,10 @@ import com.amarket.apiserver.model.entity.Seller;
 import lombok.Data;
 
 @Data
-public class SellerUpdateReqDto {
+public class SellerCreateRequest {
     private String id;
     private String name;
+    private String password;
     private String email;
     private String phoneNumber;
     private String bizNumber;
@@ -16,6 +17,8 @@ public class SellerUpdateReqDto {
 
     public Seller toEntity() {
         return Seller.builder()
+                .id(this.id)
+                .password(this.password)
                 .name(this.name)
                 .email(this.email)
                 .phoneNumber(this.phoneNumber)
@@ -23,6 +26,8 @@ public class SellerUpdateReqDto {
                 .bizName(this.bizName)
                 .bizAddress(this.bizAddress)
                 .bizTel(this.bizTel)
-            .build();
+                .build();
     }
+
+
 }

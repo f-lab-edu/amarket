@@ -1,12 +1,13 @@
 package com.amarket.apiserver.service;
 
-import com.amarket.apiserver.model.dto.SellerCreateReqDto;
-import com.amarket.apiserver.model.dto.SellerResDto;
-import com.amarket.apiserver.model.dto.SellerUpdateReqDto;
+import com.amarket.apiserver.model.dto.SellerCreateRequest;
+import com.amarket.apiserver.model.dto.SellerResponse;
+import com.amarket.apiserver.model.dto.SellerUpdateRequest;
 import com.amarket.apiserver.model.entity.Seller;
 import com.amarket.apiserver.repository.SellerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,47 +21,38 @@ public class SellerService {
         this.sellerRepository = sellerRepository;
     }
 
-    public SellerResDto create(SellerCreateReqDto reqDto) {
-        log.info("reqDto={}", reqDto);
+    @Transactional
+    public SellerResponse create(SellerCreateRequest reqDto) {
         Seller seller = reqDto.toEntity();
-        log.info("seller={}", seller);
-
         Seller save = sellerRepository.save(seller);
-        System.out.println("save : " + save);
-
-        SellerResDto sellerResDto = SellerResDto.fromEntity(save);
-
-        System.out.println("sellerResDto : " + sellerResDto);
-
-        return sellerResDto;
+        return SellerResponse.fromEntity(save);
     }
 
-    public SellerResDto findById(String id) throws Exception {
+    @Transactional
+    public SellerResponse findById(String id) throws Exception {
         Optional<Seller> byId = sellerRepository.findById(id);
-        if (!byId.isPresent()) {
-            throw new Exception("NotFound Seller. id=" + id);
+        if (byId.isEmpty()) {
+            throw new Exception("Not Found Seller. id=" + id);
         }
-
-        return SellerResDto.fromEntity(byId.get());
+        return SellerResponse.fromEntity(byId.get());
     }
 
-    public SellerResDto update(String id, SellerUpdateReqDto reqDto) throws Exception {
+    @Transactional
+    public SellerResponse update(String id, SellerUpdateRequest reqDto) throws Exception {
         Optional<Seller> byId = sellerRepository.findById(id);
-        if (!byId.isPresent()) {
-            throw new Exception("NotFound Seller. id=" + id);
+        if (byId.isEmpty()) {
+            throw new Exception("Not Found Seller. id=" + id);
         }
-
         Seller seller = byId.get();
-        seller.update(reqDto);
-
-        return SellerResDto.fromEntity(sellerRepository.save(seller));
+        seller.update(reqDto.toEntity());
+        return SellerResponse.fromEntity(seller);
     }
 
-
+    @Transactional
     public void delete(String id) throws Exception {
         Optional<Seller> byId = sellerRepository.findById(id);
-        if (!byId.isPresent()) {
-            throw new Exception("NotFound Seller. id=" + id);
+        if (byId.isEmpty()) {
+            throw new Exception("Not Found Seller. id=" + id);
         }
         Seller seller = byId.get();
         sellerRepository.delete(seller);

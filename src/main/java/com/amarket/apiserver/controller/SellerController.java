@@ -1,15 +1,14 @@
 package com.amarket.apiserver.controller;
 
-import com.amarket.apiserver.common.response.CommonResponse;
-import com.amarket.apiserver.model.dto.SellerCreateReqDto;
-import com.amarket.apiserver.model.dto.SellerResDto;
-import com.amarket.apiserver.model.dto.SellerUpdateReqDto;
-import com.amarket.apiserver.model.entity.Seller;
+import com.amarket.apiserver.model.dto.SellerCreateRequest;
+import com.amarket.apiserver.model.dto.SellerResponse;
+import com.amarket.apiserver.model.dto.SellerUpdateRequest;
 import com.amarket.apiserver.service.SellerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
+@RequestMapping(path = "/api/v1/sellers")
 @RestController
 public class SellerController {
 
@@ -19,23 +18,22 @@ public class SellerController {
         this.sellerService = sellerService;
     }
 
-    @PostMapping("/seller/create")
-    public CommonResponse<SellerResDto> create(@RequestBody SellerCreateReqDto reqDto) {
-        return new CommonResponse<>(sellerService.create(reqDto));
+    @PostMapping("")
+    public SellerResponse create(@RequestBody SellerCreateRequest reqDto) {
+        return sellerService.create(reqDto);
     }
 
-    @GetMapping("/seller/{id}")
-    public CommonResponse<SellerResDto> create(@PathVariable String id) throws Exception {
-        return new CommonResponse<>(sellerService.findById(id));
+    @GetMapping("/{id}")
+    public SellerResponse findById(@PathVariable String id) throws Exception {
+        return sellerService.findById(id);
     }
 
-    @PostMapping("/seller/update{id}")
-    public CommonResponse<SellerResDto> create(@PathVariable String id,
-                                               @RequestBody SellerUpdateReqDto reqDto) throws Exception {
-        return new CommonResponse<>(sellerService.update(id, reqDto));
+    @PutMapping("/{id}")
+    public SellerResponse update(@PathVariable String id, @RequestBody SellerUpdateRequest reqDto) throws Exception {
+        return sellerService.update(id, reqDto);
     }
 
-    @DeleteMapping("/seller/delete/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) throws Exception {
         sellerService.delete(id);
     }

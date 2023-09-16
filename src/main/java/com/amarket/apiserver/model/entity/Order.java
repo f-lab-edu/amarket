@@ -25,7 +25,6 @@ public class Order {
     @Column(name = "order_date")
     private String orderDate; // index
 
-
     @Column(name = "seller_id")
     private String sellerId; // 판매자정보 어떻게 관리할지?
 

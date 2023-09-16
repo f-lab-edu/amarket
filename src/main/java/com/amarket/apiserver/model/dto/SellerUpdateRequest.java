@@ -1,14 +1,12 @@
 package com.amarket.apiserver.model.dto;
 
 import com.amarket.apiserver.model.entity.Seller;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class SellerCreateReqDto {
+public class SellerUpdateRequest {
     private String id;
     private String name;
-    private String password;
     private String email;
     private String phoneNumber;
     private String bizNumber;
@@ -18,8 +16,6 @@ public class SellerCreateReqDto {
 
     public Seller toEntity() {
         return Seller.builder()
-                .id(this.id)
-                .password(this.password)
                 .name(this.name)
                 .email(this.email)
                 .phoneNumber(this.phoneNumber)
@@ -27,8 +23,6 @@ public class SellerCreateReqDto {
                 .bizName(this.bizName)
                 .bizAddress(this.bizAddress)
                 .bizTel(this.bizTel)
-                .build();
+            .build();
     }
-
-
 }

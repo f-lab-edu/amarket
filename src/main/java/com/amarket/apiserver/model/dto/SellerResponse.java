@@ -2,11 +2,9 @@ package com.amarket.apiserver.model.dto;
 
 import com.amarket.apiserver.model.entity.Seller;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
-@ToString
-public class SellerResDto {
+public class SellerResponse {
     private String id;
     private String name;
     private String email;
@@ -16,8 +14,8 @@ public class SellerResDto {
     private String bizAddress;
     private String bizTel;
 
-    public static SellerResDto fromEntity(Seller seller) {
-        SellerResDto dto = new SellerResDto();
+    public static SellerResponse fromEntity(Seller seller) {
+        SellerResponse dto = new SellerResponse();
         dto.setId(seller.getId());
         dto.setName(seller.getName());
         dto.setEmail(seller.getEmail());

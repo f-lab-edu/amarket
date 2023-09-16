@@ -1,19 +1,15 @@
 package com.amarket.apiserver.model.entity;
 
 
-import com.amarket.apiserver.model.dto.SellerUpdateReqDto;
 import lombok.*;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Getter
-@Builder
 @Table(name = "SELLER")
-@Entity
 @ToString
+@Getter
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Seller {
@@ -30,31 +26,28 @@ public class Seller {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "bizNumber")
+    @Column(name = "biz_number")
     private String bizNumber;
 
-    @Column(name = "bizName")
+    @Column(name = "biz_name")
     private String bizName;
 
-    @Column(name = "bizAddress")
+    @Column(name = "biz_addr")
     private String bizAddress;
 
-    @Column(name = "bizTel")
+    @Column(name = "biz_tel")
     private String bizTel;
 
-    @OneToMany(mappedBy = "seller") // 맵핑되는 테이블의 필드이름
-    private List<Category> productCategories = new ArrayList<>();
-
-    public void update(SellerUpdateReqDto reqDto) {
-        this.name = reqDto.getName();
-        this.email = reqDto.getEmail();
-        this.phoneNumber = reqDto.getPhoneNumber();
-        this.bizNumber = reqDto.getBizNumber();
-        this.bizName = reqDto.getBizName();
-        this.bizAddress = reqDto.getBizAddress();
-        this.bizTel = reqDto.getBizTel();
+    public void update(Seller seller) {
+        this.name = seller.getName();
+        this.email = seller.getEmail();
+        this.phoneNumber = seller.getPhoneNumber();
+        this.bizNumber = seller.getBizNumber();
+        this.bizName = seller.getBizName();
+        this.bizAddress = seller.getBizAddress();
+        this.bizTel = seller.getBizTel();
     }
 }
