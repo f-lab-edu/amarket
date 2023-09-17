@@ -1,13 +1,11 @@
 package com.amarket.apiserver.controller;
 
-import com.amarket.apiserver.model.dto.SellerCreateRequest;
-import com.amarket.apiserver.model.dto.SellerResponse;
-import com.amarket.apiserver.model.dto.SellerUpdateRequest;
+import com.amarket.apiserver.model.dto.seller.SellerCreateRequest;
+import com.amarket.apiserver.model.dto.seller.SellerResponse;
+import com.amarket.apiserver.model.dto.seller.SellerUpdateRequest;
 import com.amarket.apiserver.service.SellerService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
 @RequestMapping(path = "/api/v1/sellers")
 @RestController
 public class SellerController {

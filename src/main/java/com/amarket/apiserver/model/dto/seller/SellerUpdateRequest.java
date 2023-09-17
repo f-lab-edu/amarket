@@ -1,4 +1,4 @@
-package com.amarket.apiserver.model.dto;
+package com.amarket.apiserver.model.dto.seller;
 
 import com.amarket.apiserver.model.entity.Seller;
 import lombok.Data;

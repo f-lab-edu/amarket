@@ -1,8 +1,8 @@
 package com.amarket.apiserver.service;
 
-import com.amarket.apiserver.model.dto.SellerCreateRequest;
-import com.amarket.apiserver.model.dto.SellerResponse;
-import com.amarket.apiserver.model.dto.SellerUpdateRequest;
+import com.amarket.apiserver.model.dto.seller.SellerCreateRequest;
+import com.amarket.apiserver.model.dto.seller.SellerResponse;
+import com.amarket.apiserver.model.dto.seller.SellerUpdateRequest;
 import com.amarket.apiserver.model.entity.Seller;
 import com.amarket.apiserver.repository.SellerRepository;
 import lombok.extern.slf4j.Slf4j;

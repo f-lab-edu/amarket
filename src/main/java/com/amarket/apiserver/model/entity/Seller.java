@@ -5,6 +5,9 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Table(name = "SELLER")
 @ToString
 @Getter
@@ -40,6 +43,13 @@ public class Seller {
 
     @Column(name = "biz_tel")
     private String bizTel;
+
+    @OneToMany(mappedBy = "seller")
+    private List<Product> productList = new ArrayList<>();
+
+    public Seller(String sellerId) {
+        this.id = id;
+    }
 
     public void update(Seller seller) {
         this.name = seller.getName();
