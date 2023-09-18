@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ProductResponse create(@RequestBody ProductCreateRequest reqDto) throws Exception {
+    public Long create(@RequestBody ProductCreateRequest reqDto) throws Exception {
         return productService.create(reqDto);
     }
 
@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ProductResponse update(@PathVariable Long id, @RequestParam ProductUpdateRequest reqDto) throws Exception {
+    public ProductResponse update(@PathVariable Long id, @RequestBody ProductUpdateRequest reqDto) throws Exception {
         return productService.update(id, reqDto);
     }
 

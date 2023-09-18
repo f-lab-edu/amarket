@@ -11,7 +11,6 @@ import com.amarket.apiserver.repository.SellerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.*;
 import java.util.Optional;
 
 @Service
@@ -27,29 +26,17 @@ public class ProductService {
     }
 
     @Transactional
-    public ProductResponse create(ProductCreateRequest reqDto) throws Exception {
-//        Product product = ProductCreateRequest.toEntity(reqDto);
-//        System.out.println("sellerId  : " + product.getSeller().getId());
-//        Product save = productRepository.save(product);
-//        return ProductResponse.fromEntity(save);
-
+    public Long create(ProductCreateRequest reqDto) throws Exception {
         Optional<Seller> sellerOptional = sellerRepository.findById(reqDto.getSellerId());
-        if (!sellerOptional.isPresent()) {
-            // 판매자가 존재하지 않는 경우 예외 처리를 수행할 수 있습니다.
-            throw new IllegalArgumentException("Seller not found");
+        if (sellerOptional.isEmpty()) {
+            throw new IllegalArgumentException("Seller not found : " + reqDto.getSellerId());
         }
-        Product product = new Product();
-        product.setName(reqDto.getName());
+
+        Product product = ProductCreateRequest.toEntity(reqDto);
+        // setter 안쓰고 seller 주입 방법?
         product.setSeller(sellerOptional.get());
-
-        try {
-            productRepository.save(product);
-        } catch (Exception e) {
-            System.out.println("ERROR : " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        return ProductResponse.fromEntity(product);
+        Product save = productRepository.save(product);
+        return save.getId();
     }
 
     @Transactional
@@ -58,7 +45,15 @@ public class ProductService {
         if (byId.isEmpty()) {
             throw new Exception("Not Found. id=" +  id);
         }
-        return ProductResponse.fromEntity(byId.get());
+        Product product = byId.get();
+
+        // CASE 1
+        ProductResponse productResponse = new ProductResponse();
+        productResponse.setPrice(product.getPrice());
+        return productResponse;
+
+        // CASE 2
+        //return ProductResponse.fromEntity(product);
     }
 
     @Transactional

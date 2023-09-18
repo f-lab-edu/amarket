@@ -17,16 +17,14 @@ public class ProductCreateRequest {
     private String category3;
 
     public static Product toEntity(ProductCreateRequest dto) {
-        System.out.println("toEntity dto.getSellerId() : " + dto.getSellerId());
-
-        Seller seller = new Seller(dto.getSellerId());
+        //Seller seller = new Seller(dto.getSellerId());
         return Product.builder()
                 .name(dto.getName())
                 .price(dto.getPrice())
                 .stockQuantity(dto.getStockQuantity())
                 .description(dto.getDescription())
                 .postId(dto.getPostId())
-                .seller(seller)
+                //.seller(seller)
                 .category1(dto.getCategory1())
                 .category2(dto.getCategory2())
                 .category3(dto.getCategory3())

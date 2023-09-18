@@ -4,8 +4,10 @@ import com.amarket.apiserver.model.entity.Product;
 import com.amarket.apiserver.model.entity.Seller;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ProductResponse {
     private String name;
     private Integer price;
@@ -38,7 +40,7 @@ public class ProductResponse {
                 .stockQuantity(product.getStockQuantity())
                 .description(product.getDescription())
                 .postId(product.getPostId())
-                .seller(product.getSeller())
+                .seller(product.getSeller())        //  순환참조 발생    
                 .category1(product.getCategory1())
                 .category2(product.getCategory2())
                 .category3(product.getCategory3())

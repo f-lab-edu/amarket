@@ -1,5 +1,6 @@
 package com.amarket.apiserver.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,9 +29,9 @@ public class Product {
     @Column(name = "post_id")
     private Long postId;
 
-    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
+    //@JsonIgnore
     private Seller seller;
 
     @Column(name = "category_1")

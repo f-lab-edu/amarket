@@ -11,8 +11,6 @@ public class ProductUpdateRequest {
     private Integer stockQuantity;
     private String description;
     private Long postId;
-    private Seller seller;
-    private Long sellerId;
     private String category1 ;
     private String category2;
     private String category3;
@@ -24,7 +22,6 @@ public class ProductUpdateRequest {
                 .stockQuantity(dto.getStockQuantity())
                 .description(dto.getDescription())
                 .postId(dto.getPostId())
-                .seller(dto.getSeller())
                 .category1(dto.getCategory1())
                 .category2(dto.getCategory2())
                 .category3(dto.getCategory3())
