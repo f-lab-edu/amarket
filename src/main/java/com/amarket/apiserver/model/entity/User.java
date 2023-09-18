@@ -1,5 +1,7 @@
 package com.amarket.apiserver.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +31,7 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    //@JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<UserAddress> userAddresses = new ArrayList<>();
 
