@@ -1,12 +1,17 @@
 package com.amarket.apiserver.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Table(name = "USERS")
 @Entity
+@NoArgsConstructor
 public class User {
     @Id
     @Column(name = "user_id")
@@ -30,4 +35,17 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
+    @Builder
+    public User(String id, String name, String password, String email, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void update(User user) {
+        this.email = user.getEmail();
+        this.phoneNumber = user.getPhoneNumber();
+    }
 }

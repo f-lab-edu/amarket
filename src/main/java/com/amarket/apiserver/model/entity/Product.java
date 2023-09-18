@@ -57,10 +57,6 @@ public class Product {
         this.category3 = category3;
     }
 
-    public Product() {
-
-    }
-
     public void update(Product product) {
         this.name = product.getName();
         this.price = product.getPrice();

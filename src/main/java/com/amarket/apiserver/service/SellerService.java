@@ -23,7 +23,7 @@ public class SellerService {
 
     @Transactional
     public SellerResponse create(SellerCreateRequest reqDto) {
-        Seller seller = reqDto.toEntity();
+        Seller seller = reqDto.toEntity(reqDto);
         Seller save = sellerRepository.save(seller);
         return SellerResponse.fromEntity(save);
     }

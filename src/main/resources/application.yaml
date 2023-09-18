@@ -5,9 +5,9 @@ spring:
   #    password:
   #    driver-class-name: org.h2.Driver
   datasource:
-    url: jdbc:mysql://localhost:3306/amarket_02
-    username: root
-    password: 1234
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:amarket_02}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:1234}
     driver-class-name: com.mysql.cj.jdbc.Driver
 #  flyway:
 #    enabled: false
@@ -22,7 +22,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-    defer-datasource-initialization: true # ??? ???? ???
+    defer-datasource-initialization: true
     generate-ddl: true #
 
 

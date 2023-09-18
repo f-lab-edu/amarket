@@ -15,17 +15,17 @@ public class SellerCreateRequest { //
     private String bizAddress;
     private String bizTel;
 
-    public Seller toEntity() {
+    public Seller toEntity(SellerCreateRequest dto) {
         return Seller.builder()
-                .id(this.id)
-                .password(this.password)
-                .name(this.name)
-                .email(this.email)
-                .phoneNumber(this.phoneNumber)
-                .bizNumber(this.bizNumber)
-                .bizName(this.bizName)
-                .bizAddress(this.bizAddress)
-                .bizTel(this.bizTel)
+                .id(dto.getId())
+                .password(dto.getPassword())
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .phoneNumber(dto.phoneNumber)
+                .bizNumber(dto.bizNumber)
+                .bizName(dto.bizName)
+                .bizAddress(dto.bizAddress)
+                .bizTel(dto.bizTel)
                 .build();
     }
 

@@ -12,7 +12,6 @@ import java.util.List;
 @ToString
 @Getter
 @Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Seller {
@@ -49,6 +48,20 @@ public class Seller {
 
     public Seller(String sellerId) {
         this.id = id;
+    }
+
+    @Builder
+    public Seller(String id, String name, String password, String email, String phoneNumber, String bizNumber
+            , String bizName, String bizAddress, String bizTel) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.bizNumber = bizNumber;
+        this.bizName = bizName;
+        this.bizAddress = bizAddress;
+        this.bizTel = bizTel;
     }
 
     public void update(Seller seller) {
