@@ -5,13 +5,12 @@ import com.amarket.apiserver.model.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Table(name = "ORDERS")
 @Entity
 public class Order {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
 
@@ -32,5 +31,6 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
+    // test
 
 }
