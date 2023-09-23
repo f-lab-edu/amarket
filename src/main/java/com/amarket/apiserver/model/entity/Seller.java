@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 public class Seller {
     @Id
     @Column(name = "seller_id")
@@ -42,9 +41,6 @@ public class Seller {
 
     @Column(name = "biz_tel")
     private String bizTel;
-
-    @OneToMany(mappedBy = "seller")
-    private List<Product> productList = new ArrayList<>();
 
     public Seller(String sellerId) {
         this.id = id;

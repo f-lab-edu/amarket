@@ -32,7 +32,6 @@ public class UserAddress {
     @Column(name = "road_addr")
     private String roadAddress;
 
-    //@JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id") // 카테고리 테이블에 생성될 컬럼이름
     private User user;

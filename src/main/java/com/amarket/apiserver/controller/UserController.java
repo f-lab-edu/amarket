@@ -35,4 +35,5 @@ public class UserController {
     public void delete(@PathVariable String id) throws Exception {
         userService.delete(id);
     }
+
 }
